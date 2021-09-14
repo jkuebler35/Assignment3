@@ -1,0 +1,295 @@
+[ DEBUG ] : Adding state (MissionConfig, <uav.missionconfig.MissionConfig object at 0x7f17703bb7d0>, {'config_completed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'MissionConfig' to the state machine.
+[ DEBUG ] : State 'MissionConfig' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR MissionConfig: {'config_completed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (OnGroundInactive, <uav.ongroundinactive.OnGroundInactive object at 0x7f17703bb890>, {'preflight_checks_initiated': 'PreflightChecks'})
+[ DEBUG ] : Adding state 'OnGroundInactive' to the state machine.
+[ DEBUG ] : State 'OnGroundInactive' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR OnGroundInactive: {'preflight_checks_initiated': 'PreflightChecks'}
+[ DEBUG ] : Adding state (PreflightChecks, <uav.preflightchecks.PreflightChecks object at 0x7f17703bb450>, {'preflight_checks_passed': 'Standby', 'preflight_checks_failed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'PreflightChecks' to the state machine.
+[ DEBUG ] : State 'PreflightChecks' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR PreflightChecks: {'preflight_checks_passed': 'Standby', 'preflight_checks_failed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (Standby, <uav.standby.Standby object at 0x7f17703bb8d0>, {'launch_command_received': 'Arming'})
+[ DEBUG ] : Adding state 'Standby' to the state machine.
+[ DEBUG ] : State 'Standby' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Standby: {'launch_command_received': 'Arming'}
+[ DEBUG ] : Adding state (Arming, <uav.arming.Arming object at 0x7f17703bb910>, {'armed': 'TakingOff', 'arming_failed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'Arming' to the state machine.
+[ DEBUG ] : State 'Arming' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Arming: {'armed': 'TakingOff', 'arming_failed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (TakingOff, <uav.takingoff.TakingOff object at 0x7f17703bb950>, {'altitude_reached': 'PerformCustomMissionTasks', 'takeoff_aborted': 'Land'})
+[ DEBUG ] : Adding state 'TakingOff' to the state machine.
+[ DEBUG ] : State 'TakingOff' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR TakingOff: {'altitude_reached': 'PerformCustomMissionTasks', 'takeoff_aborted': 'Land'}
+[ DEBUG ] : Adding state (PerformCustomMissionTasks, <uav.performcustommissiontasks.PerformCustomMissionTasks object at 0x7f17703bb990>, {'additional_tasks': 'PerformCustomMissionTasks', 'recalled': 'ReturnHome'})
+[ DEBUG ] : Adding state 'PerformCustomMissionTasks' to the state machine.
+[ DEBUG ] : State 'PerformCustomMissionTasks' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR PerformCustomMissionTasks: {'additional_tasks': 'PerformCustomMissionTasks', 'recalled': 'ReturnHome'}
+[ DEBUG ] : Adding state (ReturnHome, <uav.returnhome.ReturnHome object at 0x7f17703bb9d0>, {'reached_home_coordinates': 'Land'})
+[ DEBUG ] : Adding state 'ReturnHome' to the state machine.
+[ DEBUG ] : State 'ReturnHome' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR ReturnHome: {'reached_home_coordinates': 'Land'}
+[ DEBUG ] : Adding state (Land, <uav.land.Land object at 0x7f17703bba90>, {'landed': 'Disarmed'})
+[ DEBUG ] : Adding state 'Land' to the state machine.
+[ DEBUG ] : State 'Land' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Land: {'landed': 'Disarmed'}
+[ DEBUG ] : Adding state (Disarmed, <uav.disarmed.Disarmed object at 0x7f17703bba10>, {'do_stop': 'Stop'})
+[ DEBUG ] : Adding state 'Disarmed' to the state machine.
+[ DEBUG ] : State 'Disarmed' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Disarmed: {'do_stop': 'Stop'}
+[ DEBUG ] : Adding state (Stop, <__main__.Stop object at 0x7f17703bba50>, {'do_exit': 'do_exit'})
+[ DEBUG ] : Adding state 'Stop' to the state machine.
+[ DEBUG ] : State 'Stop' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Stop: {'do_exit': 'do_exit'}
+[  INFO ] : State machine starting in initial state 'MissionConfig' with userdata: 
+	[]
+[INFO] [1631588694.866281]: The configuration is complete
+[  INFO ] : State machine transitioning 'MissionConfig':'config_completed'-->'OnGroundInactive'
+[INFO] [1631588695.869669]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588697.876609]: Value is 7
+[INFO] [1631588697.881008]: Preflight checks passed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_passed'-->'Standby'
+[INFO] [1631588697.882718]: Launch command recieved
+[  INFO ] : State machine transitioning 'Standby':'launch_command_received'-->'Arming'
+[INFO] [1631588699.886712]: Value is 4
+[INFO] [1631588699.889050]: UAV arming failed
+[  INFO ] : State machine transitioning 'Arming':'arming_failed'-->'OnGroundInactive'
+[INFO] [1631588699.891849]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588701.895839]: Value is 4
+[INFO] [1631588701.900583]: Preflight checks failed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_failed'-->'OnGroundInactive'
+[INFO] [1631588701.902348]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588703.906372]: Value is 3
+[INFO] [1631588703.908558]: Preflight checks failed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_failed'-->'OnGroundInactive'
+[INFO] [1631588703.910123]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588705.914144]: Value is 8
+[INFO] [1631588705.916399]: Preflight checks passed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_passed'-->'Standby'
+[INFO] [1631588705.917909]: Launch command recieved
+[  INFO ] : State machine transitioning 'Standby':'launch_command_received'-->'Arming'
+[INFO] [1631588707.922683]: Value is 3
+[INFO] [1631588707.925991]: UAV arming failed
+[  INFO ] : State machine transitioning 'Arming':'arming_failed'-->'OnGroundInactive'
+[INFO] [1631588707.927808]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588709.931786]: Value is 1
+[INFO] [1631588709.933904]: Preflight checks failed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_failed'-->'OnGroundInactive'
+[INFO] [1631588709.935599]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588711.939596]: Value is 9
+[INFO] [1631588711.942040]: Preflight checks passed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_passed'-->'Standby'
+[INFO] [1631588711.944028]: Launch command recieved
+[  INFO ] : State machine transitioning 'Standby':'launch_command_received'-->'Arming'
+[INFO] [1631588713.948371]: Value is 5
+[INFO] [1631588713.950634]: UAV arming failed
+[  INFO ] : State machine transitioning 'Arming':'arming_failed'-->'OnGroundInactive'
+[INFO] [1631588713.952701]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588715.957624]: Value is 2
+[INFO] [1631588715.960932]: Preflight checks failed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_failed'-->'OnGroundInactive'
+[INFO] [1631588715.962679]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588717.967219]: Value is 2
+[INFO] [1631588717.970235]: Preflight checks failed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_failed'-->'OnGroundInactive'
+[INFO] [1631588717.972030]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588719.975516]: Value is 9
+[INFO] [1631588719.978511]: Preflight checks passed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_passed'-->'Standby'
+[INFO] [1631588719.980505]: Launch command recieved
+[  INFO ] : State machine transitioning 'Standby':'launch_command_received'-->'Arming'
+[INFO] [1631588721.984549]: Value is 1
+[INFO] [1631588721.986802]: UAV arming failed
+[  INFO ] : State machine transitioning 'Arming':'arming_failed'-->'OnGroundInactive'
+[INFO] [1631588721.989674]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631588723.993832]: Value is 7
+[INFO] [1631588723.996294]: Preflight checks passed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_passed'-->'Standby'
+[INFO] [1631588723.997890]: Launch command recieved
+[  INFO ] : State machine transitioning 'Standby':'launch_command_received'-->'Arming'
+[INFO] [1631588726.001857]: Value is 10
+[INFO] [1631588726.004194]: UAV armed
+[  INFO ] : State machine transitioning 'Arming':'armed'-->'TakingOff'
+[INFO] [1631588727.007174]: Value is 6
+[INFO] [1631588727.009320]: Altitude reached
+[  INFO ] : State machine transitioning 'TakingOff':'altitude_reached'-->'PerformCustomMissionTasks'
+[INFO] [1631588728.012196]: Value is 5
+[INFO] [1631588728.014401]: Additional mission tasks assigned
+[  INFO ] : State machine transitioning 'PerformCustomMissionTasks':'additional_tasks'-->'PerformCustomMissionTasks'
+[INFO] [1631588729.017378]: Value is 6
+[INFO] [1631588729.020317]: UAV recalled
+[  INFO ] : State machine transitioning 'PerformCustomMissionTasks':'recalled'-->'ReturnHome'
+[INFO] [1631588729.022095]: UAV reached home coordinates
+[  INFO ] : State machine transitioning 'ReturnHome':'reached_home_coordinates'-->'Land'
+[INFO] [1631588730.025323]: UAV has landed
+[  INFO ] : State machine transitioning 'Land':'landed'-->'Disarmed'
+[INFO] [1631588731.029232]: UAV has been disarmed
+[  INFO ] : State machine transitioning 'Disarmed':'do_stop'-->'Stop'
+[INFO] [1631588732.033081]: The UAV has been disarmed
+[  INFO ] : State machine terminating 'Stop':'do_exit':'do_exit'
+=======================
+second test
+=======================
+[ DEBUG ] : Adding state (MissionConfig, <uav.missionconfig.MissionConfig object at 0x7f01964617d0>, {'config_completed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'MissionConfig' to the state machine.
+[ DEBUG ] : State 'MissionConfig' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR MissionConfig: {'config_completed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (OnGroundInactive, <uav.ongroundinactive.OnGroundInactive object at 0x7f0196461890>, {'preflight_checks_initiated': 'PreflightChecks'})
+[ DEBUG ] : Adding state 'OnGroundInactive' to the state machine.
+[ DEBUG ] : State 'OnGroundInactive' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR OnGroundInactive: {'preflight_checks_initiated': 'PreflightChecks'}
+[ DEBUG ] : Adding state (PreflightChecks, <uav.preflightchecks.PreflightChecks object at 0x7f0196461450>, {'preflight_checks_passed': 'Standby', 'preflight_checks_failed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'PreflightChecks' to the state machine.
+[ DEBUG ] : State 'PreflightChecks' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR PreflightChecks: {'preflight_checks_passed': 'Standby', 'preflight_checks_failed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (Standby, <uav.standby.Standby object at 0x7f01964618d0>, {'launch_command_received': 'Arming'})
+[ DEBUG ] : Adding state 'Standby' to the state machine.
+[ DEBUG ] : State 'Standby' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Standby: {'launch_command_received': 'Arming'}
+[ DEBUG ] : Adding state (Arming, <uav.arming.Arming object at 0x7f0196461910>, {'armed': 'TakingOff', 'arming_failed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'Arming' to the state machine.
+[ DEBUG ] : State 'Arming' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Arming: {'armed': 'TakingOff', 'arming_failed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (TakingOff, <uav.takingoff.TakingOff object at 0x7f0196461950>, {'altitude_reached': 'PerformCustomMissionTasks', 'takeoff_aborted': 'Land'})
+[ DEBUG ] : Adding state 'TakingOff' to the state machine.
+[ DEBUG ] : State 'TakingOff' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR TakingOff: {'altitude_reached': 'PerformCustomMissionTasks', 'takeoff_aborted': 'Land'}
+[ DEBUG ] : Adding state (PerformCustomMissionTasks, <uav.performcustommissiontasks.PerformCustomMissionTasks object at 0x7f0196461990>, {'additional_tasks': 'PerformCustomMissionTasks', 'recalled': 'ReturnHome'})
+[ DEBUG ] : Adding state 'PerformCustomMissionTasks' to the state machine.
+[ DEBUG ] : State 'PerformCustomMissionTasks' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR PerformCustomMissionTasks: {'additional_tasks': 'PerformCustomMissionTasks', 'recalled': 'ReturnHome'}
+[ DEBUG ] : Adding state (ReturnHome, <uav.returnhome.ReturnHome object at 0x7f01964619d0>, {'reached_home_coordinates': 'Land'})
+[ DEBUG ] : Adding state 'ReturnHome' to the state machine.
+[ DEBUG ] : State 'ReturnHome' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR ReturnHome: {'reached_home_coordinates': 'Land'}
+[ DEBUG ] : Adding state (Land, <uav.land.Land object at 0x7f0196461a90>, {'landed': 'Disarmed'})
+[ DEBUG ] : Adding state 'Land' to the state machine.
+[ DEBUG ] : State 'Land' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Land: {'landed': 'Disarmed'}
+[ DEBUG ] : Adding state (Disarmed, <uav.disarmed.Disarmed object at 0x7f0196461a10>, {'do_stop': 'Stop'})
+[ DEBUG ] : Adding state 'Disarmed' to the state machine.
+[ DEBUG ] : State 'Disarmed' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Disarmed: {'do_stop': 'Stop'}
+[ DEBUG ] : Adding state (Stop, <__main__.Stop object at 0x7f0196461a50>, {'do_exit': 'do_exit'})
+[ DEBUG ] : Adding state 'Stop' to the state machine.
+[ DEBUG ] : State 'Stop' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Stop: {'do_exit': 'do_exit'}
+[  INFO ] : State machine starting in initial state 'MissionConfig' with userdata: 
+	[]
+[INFO] [1631591686.820530]: The configuration is complete
+[  INFO ] : State machine transitioning 'MissionConfig':'config_completed'-->'OnGroundInactive'
+[INFO] [1631591687.824185]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631591689.829497]: Value is 4
+[INFO] [1631591689.833099]: Preflight checks failed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_failed'-->'OnGroundInactive'
+[INFO] [1631591689.835246]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631591691.838534]: Value is 5
+[INFO] [1631591691.842071]: Preflight checks failed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_failed'-->'OnGroundInactive'
+[INFO] [1631591691.843828]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631591693.848209]: Value is 9
+[INFO] [1631591693.852114]: Preflight checks passed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_passed'-->'Standby'
+[INFO] [1631591693.853896]: Launch command recieved
+[  INFO ] : State machine transitioning 'Standby':'launch_command_received'-->'Arming'
+[INFO] [1631591695.858216]: Value is 6
+[INFO] [1631591695.860556]: UAV armed
+[  INFO ] : State machine transitioning 'Arming':'armed'-->'TakingOff'
+[INFO] [1631591696.863410]: Value is 4
+[INFO] [1631591696.865736]: Takeoff aborted
+[  INFO ] : State machine transitioning 'TakingOff':'takeoff_aborted'-->'Land'
+[INFO] [1631591696.867298]: UAV has landed
+[  INFO ] : State machine transitioning 'Land':'landed'-->'Disarmed'
+[INFO] [1631591697.870468]: UAV has been disarmed
+[  INFO ] : State machine transitioning 'Disarmed':'do_stop'-->'Stop'
+[INFO] [1631591698.874802]: The UAV has been disarmed
+[  INFO ] : State machine terminating 'Stop':'do_exit':'do_exit'
+==========================
+third test
+==========================
+[ DEBUG ] : Adding state (MissionConfig, <uav.missionconfig.MissionConfig object at 0x7fafad7017d0>, {'config_completed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'MissionConfig' to the state machine.
+[ DEBUG ] : State 'MissionConfig' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR MissionConfig: {'config_completed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (OnGroundInactive, <uav.ongroundinactive.OnGroundInactive object at 0x7fafad701890>, {'preflight_checks_initiated': 'PreflightChecks'})
+[ DEBUG ] : Adding state 'OnGroundInactive' to the state machine.
+[ DEBUG ] : State 'OnGroundInactive' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR OnGroundInactive: {'preflight_checks_initiated': 'PreflightChecks'}
+[ DEBUG ] : Adding state (PreflightChecks, <uav.preflightchecks.PreflightChecks object at 0x7fafad701450>, {'preflight_checks_passed': 'Standby', 'preflight_checks_failed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'PreflightChecks' to the state machine.
+[ DEBUG ] : State 'PreflightChecks' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR PreflightChecks: {'preflight_checks_passed': 'Standby', 'preflight_checks_failed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (Standby, <uav.standby.Standby object at 0x7fafad7018d0>, {'launch_command_received': 'Arming'})
+[ DEBUG ] : Adding state 'Standby' to the state machine.
+[ DEBUG ] : State 'Standby' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Standby: {'launch_command_received': 'Arming'}
+[ DEBUG ] : Adding state (Arming, <uav.arming.Arming object at 0x7fafad701910>, {'armed': 'TakingOff', 'arming_failed': 'OnGroundInactive'})
+[ DEBUG ] : Adding state 'Arming' to the state machine.
+[ DEBUG ] : State 'Arming' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Arming: {'armed': 'TakingOff', 'arming_failed': 'OnGroundInactive'}
+[ DEBUG ] : Adding state (TakingOff, <uav.takingoff.TakingOff object at 0x7fafad701950>, {'altitude_reached': 'PerformCustomMissionTasks', 'takeoff_aborted': 'Land'})
+[ DEBUG ] : Adding state 'TakingOff' to the state machine.
+[ DEBUG ] : State 'TakingOff' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR TakingOff: {'altitude_reached': 'PerformCustomMissionTasks', 'takeoff_aborted': 'Land'}
+[ DEBUG ] : Adding state (PerformCustomMissionTasks, <uav.performcustommissiontasks.PerformCustomMissionTasks object at 0x7fafad701990>, {'additional_tasks': 'PerformCustomMissionTasks', 'recalled': 'ReturnHome'})
+[ DEBUG ] : Adding state 'PerformCustomMissionTasks' to the state machine.
+[ DEBUG ] : State 'PerformCustomMissionTasks' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR PerformCustomMissionTasks: {'additional_tasks': 'PerformCustomMissionTasks', 'recalled': 'ReturnHome'}
+[ DEBUG ] : Adding state (ReturnHome, <uav.returnhome.ReturnHome object at 0x7fafad7019d0>, {'reached_home_coordinates': 'Land'})
+[ DEBUG ] : Adding state 'ReturnHome' to the state machine.
+[ DEBUG ] : State 'ReturnHome' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR ReturnHome: {'reached_home_coordinates': 'Land'}
+[ DEBUG ] : Adding state (Land, <uav.land.Land object at 0x7fafad701a90>, {'landed': 'Disarmed'})
+[ DEBUG ] : Adding state 'Land' to the state machine.
+[ DEBUG ] : State 'Land' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Land: {'landed': 'Disarmed'}
+[ DEBUG ] : Adding state (Disarmed, <uav.disarmed.Disarmed object at 0x7fafad701a10>, {'do_stop': 'Stop'})
+[ DEBUG ] : Adding state 'Disarmed' to the state machine.
+[ DEBUG ] : State 'Disarmed' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Disarmed: {'do_stop': 'Stop'}
+[ DEBUG ] : Adding state (Stop, <__main__.Stop object at 0x7fafad701a50>, {'do_exit': 'do_exit'})
+[ DEBUG ] : Adding state 'Stop' to the state machine.
+[ DEBUG ] : State 'Stop' is missing transitions: {}
+[ DEBUG ] : TRANSITIONS FOR Stop: {'do_exit': 'do_exit'}
+[  INFO ] : State machine starting in initial state 'MissionConfig' with userdata: 
+	[]
+[INFO] [1631591926.624260]: The configuration is complete
+[  INFO ] : State machine transitioning 'MissionConfig':'config_completed'-->'OnGroundInactive'
+[INFO] [1631591927.627744]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631591929.633083]: Value is 3
+[INFO] [1631591929.635546]: Preflight checks failed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_failed'-->'OnGroundInactive'
+[INFO] [1631591929.637237]: The preflight checks are initiated
+[  INFO ] : State machine transitioning 'OnGroundInactive':'preflight_checks_initiated'-->'PreflightChecks'
+[INFO] [1631591931.640692]: Value is 6
+[INFO] [1631591931.643480]: Preflight checks passed
+[  INFO ] : State machine transitioning 'PreflightChecks':'preflight_checks_passed'-->'Standby'
+[INFO] [1631591931.645250]: Launch command recieved
+[  INFO ] : State machine transitioning 'Standby':'launch_command_received'-->'Arming'
+[INFO] [1631591933.649338]: Value is 10
+[INFO] [1631591933.651923]: UAV armed
+[  INFO ] : State machine transitioning 'Arming':'armed'-->'TakingOff'
+[INFO] [1631591934.654997]: Value is 1
+[INFO] [1631591934.657547]: Takeoff aborted
+[  INFO ] : State machine transitioning 'TakingOff':'takeoff_aborted'-->'Land'
+[INFO] [1631591934.659288]: UAV has landed
+[  INFO ] : State machine transitioning 'Land':'landed'-->'Disarmed'
+[INFO] [1631591935.662282]: UAV has been disarmed
+[  INFO ] : State machine transitioning 'Disarmed':'do_stop'-->'Stop'
+[INFO] [1631591936.666143]: The UAV has been disarmed
+[  INFO ] : State machine terminating 'Stop':'do_exit':'do_exit'
